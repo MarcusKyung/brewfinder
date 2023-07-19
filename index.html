@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BrewFinder</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,7 +13,11 @@
   <div id="infoCardDisplay">
     <p id="closestBeer"></p>
     <p id="closestBeerAddress"></p>
+    <div id="buttonContainer"></div>
   </div>
+  <div>
+    <p id="message"><em>Brewery info provided by OpenBreweryDB</em></p>
+  </div>
+  <script src="script.js"></script>
 </body>
-<script src="script.js"></script>
 </html>
