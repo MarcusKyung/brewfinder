@@ -1,0 +1,11 @@
+{
+  "name": "BrewFinder",
+  "version": "1.0.0",
+  "description": "Chrome extension to find closest brewery/brewpub to me by location",
+  "manifest_version": 3,
+  "author": "Marcus Kyung",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "BrewFinder"
+  }
+}
