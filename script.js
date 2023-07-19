@@ -58,13 +58,11 @@ async function fetchData() {
 
         createButtons(data);
 
-        // Hide the loading indicator after data is fetched and displayed
         loadingIndicator.style.display = "none";
     } catch (error) {
         console.error("Error:", error);
         document.getElementById("closestBeer").innerHTML = "This extension has encountered an error. Geolocation must be enabled in your browser settings for this extension to work. Right click on extension, click View Web Permissions, then toggle Location to Allow.";
 
-        // Hide the loading indicator in case of an error
         const loadingIndicator = document.getElementById("loadingIndicator");
         loadingIndicator.style.display = "none";
     }

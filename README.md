@@ -10,11 +10,11 @@
 * _OpenBreweryDB API_
 
 ## Description
-_This Google Chrome Extension displays the nearest brewery to a user based on their browser location. This extension uses the OpenBreweryDB API (https://www.openbrewerydb.org/). Icons provided by IconScout (https://iconscout.com/icons/beer). This extension is pending approval. Once approved this item will be available on the Google Chrome Web Store for free._ 
+_This Google Chrome Extension displays the nearest brewery to a user based on their browser location. This extension uses the OpenBreweryDB API (https://www.openbrewerydb.org/). Icons provided by IconScout (https://iconscout.com/icons/beer). This extension is available on the Google Chrome Web Store under the name: BrewFinders._ 
 
 ## Known Bugs
 
-* _No known bugs as of 7/18/2023_
+* _No known bugs as of 7/19/2023_
 
 ## License
 
