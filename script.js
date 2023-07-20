@@ -11,6 +11,37 @@ function getLocation() {
     });
 }
 
+function displayGreeting() {
+    let randomNum = Math.floor(Math.random() * 5) + 1;
+    console.log(randomNum);
+
+    let greeting;
+    let language; 
+
+    if (randomNum === 1) {
+        greeting = "Cheers!";
+        language = " (English)";
+    } else if (randomNum === 2) {
+        greeting = "Prost!";
+        language = " (German)";
+    } else if (randomNum === 3) {
+        greeting = "Salud!";
+        language = " (Spanish)";
+    } else if (randomNum === 4) {
+        greeting = "Sláinte!";
+        language = " (Irish)";
+    } else {
+        greeting = "Skål!";
+        language = " (Swedish)";
+    }
+
+    document.getElementById("greetingDisplay").classList.add("greetingStyling");
+    document.getElementById("greetingDisplay").innerHTML = greeting; 
+    document.getElementById("greetingDisplay").setAttribute("data-language", language);
+
+}
+
+
 async function createButtons(data) {
     const buttonContainer = document.getElementById("buttonContainer");
 
@@ -57,6 +88,7 @@ async function fetchData() {
         document.getElementById("closestBeerAddress").innerHTML = closestBreweryAddress + ", " + closestBreweryState + closestBreweryPostalCode;
 
         createButtons(data);
+        displayGreeting();
 
         loadingIndicator.style.display = "none";
     } catch (error) {
