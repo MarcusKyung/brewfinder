@@ -1,5 +1,6 @@
+/* General styles */
 h1 {
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 body {
@@ -8,6 +9,7 @@ body {
   background-color: #ffcc4d;
 }
 
+/* Info card styles */
 .infoCard {
   background-color: white;
   border-radius: 5px;
@@ -26,12 +28,13 @@ body {
 }
 
 .greetingStyling:hover::after {
-  content: attr(data-language); 
+  content: attr(data-language);
   display: inline;
   font-size: 12px;
   color: #777;
 }
 
+/* Button styles */
 #buttonContainer {
   display: flex;
 }
@@ -51,18 +54,16 @@ button:hover {
   transform: scale(1.05);
 }
 
-#closestBeer {
-  font-weight: bold;
-}
-
+/* Footer styles */
 #message {
   position: fixed;
-  bottom: 10px; 
+  bottom: 10px;
   text-align: center;
 }
 
+/* Loading style */
 .loading {
-  display: none; 
+  display: none;
   text-align: center;
   padding: 10px;
   background-color: #f1f1f1;
