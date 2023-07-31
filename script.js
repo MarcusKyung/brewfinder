@@ -82,9 +82,12 @@ async function fetchData() {
         const closestBreweryAddress = data[0].street;
         const closestBreweryState = data[0].state;
         const closestBreweryPostalCode = data[0].postal_code;
+        const closestBeerType = data[0].brewery_type;
+        const closestBeerTypeFirst = closestBeerType.charAt(0).toUpperCase();
+        const closestBeerTypeRest = closestBeerType.slice(1);
 
         document.getElementById("infoCardDisplay").classList.add("infoCard");
-        document.getElementById("closestBeer").innerHTML = closestBrewery;
+        document.getElementById("closestBeer").innerHTML = closestBrewery + " - " + closestBeerTypeFirst + closestBeerTypeRest;
         document.getElementById("closestBeerAddress").innerHTML = closestBreweryAddress + ", " + closestBreweryState + closestBreweryPostalCode;
 
         createButtons(data);
