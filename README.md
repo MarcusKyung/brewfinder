@@ -2,7 +2,7 @@
 
 #### By _**Marcus Kyung**_
 
-#### _This JavaScript Chrome extension allows a user to find the nearest brewery based on their location._
+#### _This JavaScript Chrome extension allows a user to find the nearest brewery based on their location. Add this extension to your browser here: (https://chrome.google.com/webstore/detail/brewfinder/fkpeaflfbnlccciohmbeejiihnmkkcjm)._
 
 ## Technologies Used
 
@@ -10,7 +10,7 @@
 * _OpenBreweryDB API_
 
 ## Description
-_This Google Chrome Extension displays the nearest brewery to a user based on their browser location. This extension uses the OpenBreweryDB API (https://www.openbrewerydb.org/). Icons provided by IconScout (https://iconscout.com/icons/beer). This extension is available on the Google Chrome Web Store under the name: BrewFinders._ 
+_This Google Chrome Extension displays the nearest brewery to a user based on their browser location. This extension uses the OpenBreweryDB API (https://www.openbrewerydb.org/). Icons provided by IconScout (https://iconscout.com/icons/beer). This extension is available on the Google Chrome Web Store under the name: BrewFinder._ 
 
 ## Known Bugs
 
