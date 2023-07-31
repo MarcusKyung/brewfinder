@@ -13,7 +13,6 @@ function getLocation() {
 
 function displayGreeting() {
     let randomNum = Math.floor(Math.random() * 5) + 1;
-    console.log(randomNum);
 
     let greeting;
     let language; 
@@ -74,12 +73,60 @@ async function createButtons(data) {
         });
     viewToggleButton.textContent = "Search Breweries";
     viewToggleContainer.appendChild(viewToggleButton);
+
+    const buttonGroup = document.getElementById("buttonGroup");
+    const prevPage = document.createElement("button");
+    const nextPage = document.createElement("button");
+    prevPage.textContent = "<<<";
+    nextPage.textContent = ">>>";
+    buttonGroup.appendChild(prevPage);
+    buttonGroup.appendChild(nextPage);
+
 }
 
-// async function searchBreweries() {
-//     try {}
+//Below is causing issues 
+function getPageValue() {
+    let pageValue = 1;
+    document.getElementById("prevPage").addEventListener("click", () => {
+        if (pageValue > 1) {
+            pageValue--;
+        }
+    });
+    document.getElementById("nextPage").addEventListener("click", () => {
+        pageValue++;
+    });
+    return pageValue;
+}
 
+async function searchBreweries(event) {
+    try {
+        event.preventDefault();
+        let state = document.getElementById("stateInput").value;
+        let city = document.getElementById("cityInput").value;
+        
+        let page = getPageValue();
+        console.log(page)
 
+        const searchResponse = await fetch(`https://api.openbrewerydb.org/v1/breweries?by_city=${city}&by_state=${state}&per_page=3&${page}`);
+        const searchData = await searchResponse.json();
+        const brewerySearchList = document.getElementById("brewerySearchList");
+
+        brewerySearchList.innerHTML = "";
+
+        if (searchData.length === 0) {
+            brewerySearchList.innerHTML = "No breweries found. Please try again.";
+        } else {
+            for (const brewery of searchData) {
+                const brewerySearchItem = document.createElement("li");
+                brewerySearchItem.textContent = brewery.name;
+                brewerySearchList.appendChild(brewerySearchItem);
+            }
+        }
+
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
 
 async function fetchData() {
     try {
@@ -118,5 +165,6 @@ async function fetchData() {
     }
 }
 
+document.getElementById("searchForm").addEventListener("submit", searchBreweries);
 
 fetchData();
