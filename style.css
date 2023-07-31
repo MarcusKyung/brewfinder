@@ -5,7 +5,7 @@ h1 {
 
 body {
   width: 300px;
-  height: 300px;
+  height: 350px;
   background-color: #ffcc4d;
 }
 
@@ -58,6 +58,15 @@ button:hover {
   transform: scale(1.05);
 }
 
+#viewToggleContainer {
+  display: flex;
+  width: 100%;
+}
+
+#viewToggleContainer button {
+  flex: 1;
+}
+
 /* Footer styles */
 #message {
   position: fixed;
@@ -74,4 +83,12 @@ button:hover {
   color: #333;
   outline: 1px solid #ffac33;
   border-radius: 5px;
+}
+
+/* Search Card  */
+#searchBreweriesDisplay {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  outline: 1px solid #ffac33;
 }

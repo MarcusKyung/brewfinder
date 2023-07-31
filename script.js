@@ -44,6 +44,7 @@ function displayGreeting() {
 
 async function createButtons(data) {
     const buttonContainer = document.getElementById("buttonContainer");
+    const viewToggleContainer = document.getElementById("viewToggleContainer");
 
     const openBreweryButton = document.createElement("button");
     openBreweryButton.textContent = "Visit OpenBreweryDB";
@@ -64,7 +65,21 @@ async function createButtons(data) {
         breweryNoHomepageButton.textContent = "No Brewery Webpage Available";
         buttonContainer.appendChild(breweryNoHomepageButton);
     }
+    const viewToggleButton = document.createElement("button");
+    viewToggleButton.addEventListener("click", () => {
+        const infoCardDisplay = document.getElementById("infoCardDisplay");
+        const searchBreweriesDisplay = document.getElementById("searchBreweriesDisplay");
+        infoCardDisplay.setAttribute("style", "display: none");
+        searchBreweriesDisplay.removeAttribute("style");
+        });
+    viewToggleButton.textContent = "Search Breweries";
+    viewToggleContainer.appendChild(viewToggleButton);
 }
+
+// async function searchBreweries() {
+//     try {}
+
+
 
 async function fetchData() {
     try {
