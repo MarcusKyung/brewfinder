@@ -85,18 +85,18 @@ async function createButtons(data) {
 }
 
 //Below is causing issues 
-function getPageValue() {
-    let pageValue = 1;
-    document.getElementById("prevPage").addEventListener("click", () => {
-        if (pageValue > 1) {
-            pageValue--;
-        }
-    });
-    document.getElementById("nextPage").addEventListener("click", () => {
-        pageValue++;
-    });
-    return pageValue;
-}
+// function getPageValue() {
+//     let pageValue = 1;
+//     document.getElementById("prevPage").addEventListener("click", () => {
+//         if (pageValue > 1) {
+//             pageValue--;
+//         }
+//     });
+//     document.getElementById("nextPage").addEventListener("click", () => {
+//         pageValue++;
+//     });
+//     return pageValue;
+// }
 
 async function searchBreweries(event) {
     try {
@@ -104,10 +104,10 @@ async function searchBreweries(event) {
         let state = document.getElementById("stateInput").value;
         let city = document.getElementById("cityInput").value;
         
-        let page = getPageValue();
-        console.log(page)
+        // let page = getPageValue();
+        // console.log(page)
 
-        const searchResponse = await fetch(`https://api.openbrewerydb.org/v1/breweries?by_city=${city}&by_state=${state}&per_page=3&${page}`);
+        const searchResponse = await fetch(`https://api.openbrewerydb.org/v1/breweries?by_city=${city}&by_state=${state}&per_page=3`);
         const searchData = await searchResponse.json();
         const brewerySearchList = document.getElementById("brewerySearchList");
 
