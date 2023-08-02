@@ -64,64 +64,79 @@ async function createButtons(data) {
         breweryNoHomepageButton.textContent = "No Brewery Webpage Available";
         buttonContainer.appendChild(breweryNoHomepageButton);
     }
+
     const viewToggleButton = document.createElement("button");
     viewToggleButton.addEventListener("click", () => {
         const infoCardDisplay = document.getElementById("infoCardDisplay");
         const searchBreweriesDisplay = document.getElementById("searchBreweriesDisplay");
         infoCardDisplay.setAttribute("style", "display: none");
         searchBreweriesDisplay.removeAttribute("style");
-        });
+    });
     viewToggleButton.textContent = "Search Breweries";
     viewToggleContainer.appendChild(viewToggleButton);
 
     const buttonGroup = document.getElementById("buttonGroup");
     const prevPage = document.createElement("button");
     const nextPage = document.createElement("button");
+    prevPage.setAttribute("id", "prevPageButton");
+    nextPage.setAttribute("id", "nextPageButton");
     prevPage.textContent = "<<<";
     nextPage.textContent = ">>>";
     buttonGroup.appendChild(prevPage);
     buttonGroup.appendChild(nextPage);
-
+    document.getElementById("prevPageButton").addEventListener("click", loadPreviousPage);
+    document.getElementById("nextPageButton").addEventListener("click", loadNextPage);
 }
 
-//Below is causing issues 
-// function getPageValue() {
-//     let pageValue = 1;
-//     document.getElementById("prevPage").addEventListener("click", () => {
-//         if (pageValue > 1) {
-//             pageValue--;
-//         }
-//     });
-//     document.getElementById("nextPage").addEventListener("click", () => {
-//         pageValue++;
-//     });
-//     return pageValue;
-// }
+
+let currentPage = 1;
+
+function loadPreviousPage() {
+    if (currentPage > 1) {
+        currentPage--;
+        searchBreweries();
+    }
+}
+
+function loadNextPage() {
+    currentPage++;
+    searchBreweries();
+}
 
 async function searchBreweries(event) {
     try {
-        event.preventDefault();
+        if (event) {
+            event.preventDefault();
+        }
+
         let state = document.getElementById("stateInput").value;
         let city = document.getElementById("cityInput").value;
-        
-        // let page = getPageValue();
-        // console.log(page)
 
-        const searchResponse = await fetch(`https://api.openbrewerydb.org/v1/breweries?by_city=${city}&by_state=${state}&per_page=3`);
+        const searchResponse = await fetch(`https://api.openbrewerydb.org/v1/breweries?by_city=${city}&by_state=${state}&per_page=3&page=${currentPage}`);
         const searchData = await searchResponse.json();
+        console.log(searchData);
         const brewerySearchList = document.getElementById("brewerySearchList");
 
         brewerySearchList.innerHTML = "";
 
         if (searchData.length === 0) {
             brewerySearchList.innerHTML = "No breweries found. Please try again.";
+        } else if (searchData.length < 3 && searchData.length > 0) {
+            nextPageButton.disabled = true; 
+            for (const brewery of searchData) {
+                const brewerySearchItem = document.createElement("li");
+                brewerySearchItem.textContent = brewery.name;
+                brewerySearchList.appendChild(brewerySearchItem);
+            }
         } else {
+            nextPageButton.disabled = false; 
             for (const brewery of searchData) {
                 const brewerySearchItem = document.createElement("li");
                 brewerySearchItem.textContent = brewery.name;
                 brewerySearchList.appendChild(brewerySearchItem);
             }
         }
+
 
     } catch (error) {
         console.error("Error:", error);
