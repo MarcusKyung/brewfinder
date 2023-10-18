@@ -16,7 +16,7 @@ _This Google Chrome Extension displays the nearest brewery to a user based on th
 
 ## Known Bugs
 
-* _Next and previous page buttons don't work for search results_
+* _No known bugs as of 10/17/2023
 
 ## License
 
